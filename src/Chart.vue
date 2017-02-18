@@ -1,9 +1,9 @@
 <template>
     <div id="sex-age">
         <div style="display:none">{{average}} {{stddev}}</div>
-        <canvas id="myChart"></canvas>
-    </div>
-    </div>
+<canvas id="myChart"></canvas>
+</div>
+</div>
 </template>
 
 <script>
@@ -61,7 +61,13 @@
     function generatedataPoints(sigma, mu) {
         let ary = [];
 
-        for (let i = 90; i < 200; i++) {
+        let min = mu - 4 * sigma < 80 ? mu - 4 * sigma : 80;
+        const max = mu + 4 * sigma > 200 ? mu + 4 * sigma : 200;
+
+        if (min < 0) min = 0;
+        const step = (max - min > 200) ? ((max - min) / 100) : 1;
+
+        for (let i = min; i < max; i += step) {
             ary.push({ "x": (i), "y": 100 * pdfunc(i, sigma, mu) });
         }
         return ary;
