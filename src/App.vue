@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <sex-age @apply="apply" />
-    <chart-data :average="150" :stddev="8.0" />
-    <chart :average="150" :stddev="8.0" />
+    <chart-data v-model="chartData"/>
+    <chart :average="chartData.average" :stddev="chartData.stddev" />
   </div>
 </template>
 
@@ -17,14 +17,12 @@
       return {
         sex: 0,
         age: 0,
-        average: 0,
-        stddev: 0
+        chartData : { average : 0,stddev:0 }
       }
     },
     methods: {
       apply: function (args) {
-        this.average = args.average;
-        this.stddev = args.stddev;
+        this.chartData = args;
       }
     },
     components: { "sex-age": SexAge, "chart": Chart, "chart-data": ChartData }

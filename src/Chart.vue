@@ -1,6 +1,6 @@
 <template>
     <div id="sex-age">
-        <h2>Chart</h2>
+        <div style="display:none">{{average}} {{stddev}}</div>
         <canvas id="myChart"></canvas>
     </div>
     </div>
@@ -8,16 +8,16 @@
 
 <script>
     import Chart from "chart.js";
-    let chart;
+    var chart;
     export default {
         name: 'chart',
         data() {
             return {
             }
         },
-        props:{
-            average : Number,
-            stddev : Number
+        props: {
+            average: Number,
+            stddev: Number
         },
         mounted() {
             var ctx = document.getElementById('myChart').getContext('2d');
@@ -33,6 +33,12 @@
                 },
                 options: {
                     scales: {
+                        yAxes: [{
+                            ticks: {
+                                suggestedMax: 7,
+                                min: 0,
+                            }
+                        }],
                         xAxes: [{
                             type: 'linear',
                             position: 'bottom'
@@ -42,7 +48,8 @@
             });
         },
         updated() {
-            chart.datasets[0].data = generatedataPoints(this.stddev, this.average)
+            chart.data.datasets[0].data = generatedataPoints(this.stddev, this.average)
+            chart.update();
         }
     }
     // 正規分布の確率密度関数
@@ -53,10 +60,8 @@
 
     function generatedataPoints(sigma, mu) {
         let ary = [];
-        const min = mu - 4 * sigma;
-        const max = mu + 4 * sigma;
 
-        for (let i = Math.floor(min); i < max; i++) {
+        for (let i = 90; i < 200; i++) {
             ary.push({ "x": (i), "y": 100 * pdfunc(i, sigma, mu) });
         }
         return ary;
