@@ -1,31 +1,39 @@
 <template>
-    <div id="sex-age">
-        <h2>生物学的性別</h2>
-        <form>
-            <input id="male" type="radio" name="sex" value="1" v-model="sex" />
-            <label for="male">男</label>
-            <input id="female" type="radio" name="sex" value="2" v-model="sex" />
-            <label for="female">女</label>
-        </form>
-        <h2>年齢(学年)</h2><br> 4/1地点の年齢
-        <br>
-        <select v-model="age">
-            <option value="0">--選択--</option>
-            <option value="5">5歳 (幼稚園)</option>
-            <option value="6">6歳 (小1)</option>
-            <option value="7">7歳 (小2)</option>
-            <option value="8">8歳 (小3)</option>
-            <option value="9">9歳 (小4)</option>
-            <option value="10">10歳(小5)</option>
-            <option value="11">11歳(小6)</option>
-            <option value="12">12歳(中1)</option>
-            <option value="13">13歳(中2)</option>
-            <option value="14">14歳(中3)</option>
-            <option value="15">15歳(高1)</option>
-            <option value="16">16歳(高2)</option>
-            <option value="17">17歳(高3)</option>
-        </select>
-        <input type="button" value="反映" @click="apply" />
+    <div class="mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">統計データ読み込み</h2>
+        </div>
+        <div class="card-content">
+            <p>
+                日本(平成27)の統計データからデータを読み込みます。年齢はその学年の4月1日であり、測定日も4月周辺です。
+            </p>
+            <div class="form-label">性別</div>
+            <mdl-radio v-model="sex" val="1">男</mdl-radio>
+            <mdl-radio v-model="sex" val="2">女</mdl-radio>
+            <br>
+            <div class="form-label" style="line-height: 28px">年齢</div>
+            <select v-model="age" id="age-select" class="mdl-textfield__input">
+                <option value="0">--- 年齢(学年) ---</option>
+                <option value="5">5歳 (幼稚園)</option>
+                <option value="6">6歳 (小1)</option>
+                <option value="7">7歳 (小2)</option>
+                <option value="8">8歳 (小3)</option>
+                <option value="9">9歳 (小4)</option>
+                <option value="10">10歳(小5)</option>
+                <option value="11">11歳(小6)</option>
+                <option value="12">12歳(中1)</option>
+                <option value="13">13歳(中2)</option>
+                <option value="14">14歳(中3)</option>
+                <option value="15">15歳(高1)</option>
+                <option value="16">16歳(高2)</option>
+                <option value="17">17歳(高3)</option>
+            </select>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+      反映
+    </a>
+        </div>
     </div>
 </template>
 
@@ -76,4 +84,14 @@
 </script>
 
 <style lang="scss">
+.form-label {
+    float: left;
+    color: #666;
+    font-size: small;
+    line-height: 24px;
+    margin-right: 10px;
+}
+select{
+    width:auto !important;
+}
 </style>

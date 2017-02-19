@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "chart.js": "^2.5.0",
-    "vue": "^2.1.0"
+    "vue": "^2.1.0",
+    "vue-mdl": "^1.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
