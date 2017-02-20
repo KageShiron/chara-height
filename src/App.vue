@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <sex-age @apply="apply" />
-    <chart-data v-model="chartData"/>
-    <generate />
+    <chart-data v-model="chartData" />
+    <generate :average="chartData.average" :stddev="chartData.stddev" />
   </div>
 </template>
 
@@ -17,7 +17,7 @@
       return {
         sex: 0,
         age: 0,
-        chartData : { average : 0,stddev:0 }
+        chartData: { average: 0, stddev: 0 }
       }
     },
     methods: {
@@ -25,7 +25,7 @@
         this.chartData = args;
       }
     },
-    components: { "sex-age": SexAge, "chart-data": ChartData ,"generate" : Generate}
+    components: { "sex-age": SexAge, "chart-data": ChartData, "generate": Generate }
   }
 
 
@@ -33,10 +33,11 @@
 
 <style lang="scss">
 .card-content{
-  margin:10px;
+  padding:10px;
 }
 .mdl-card{
   margin:10px;
   width:auto;
+  max-width:640px;
 }
 </style>
