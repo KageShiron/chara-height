@@ -2,13 +2,11 @@
   <div id="app">
     <sex-age @apply="apply" />
     <chart-data v-model="chartData"/>
-    <chart :average="chartData.average" :stddev="chartData.stddev" />
   </div>
 </template>
 
 <script>
   import SexAge from "./SexAge.vue";
-  import Chart from "./Chart.vue";
   import ChartData from "./ChartData.vue";
 
   export default {
@@ -25,7 +23,7 @@
         this.chartData = args;
       }
     },
-    components: { "sex-age": SexAge, "chart": Chart, "chart-data": ChartData }
+    components: { "sex-age": SexAge, "chart-data": ChartData }
   }
 
 
@@ -34,5 +32,9 @@
 <style lang="scss">
 .card-content{
   margin:10px;
+}
+.mdl-card{
+  margin:10px;
+  width:auto;
 }
 </style>
