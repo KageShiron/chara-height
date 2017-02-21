@@ -1,33 +1,42 @@
 <template>
-    <div class="mdl-card mdl-shadow--2dp">
-        <div class="mdl-card__title">
+    <div id="sex-age" class="mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title mdl-color--primary mdl-color-text--primary-contrast ">
             <h2 class="mdl-card__title-text">統計データ読み込み</h2>
         </div>
         <div class="card-content">
-            <p>
-                日本(平成27)の統計データからデータを読み込みます。年齢はその学年の4月1日であり、測定日も4月周辺です。
-            </p>
-            <div class="form-label">性別</div>
-            <mdl-radio v-model="sex" val="1">男</mdl-radio>
-            <mdl-radio v-model="sex" val="2">女</mdl-radio>
-            <br>
-            <div class="form-label" style="line-height: 28px">年齢</div>
-            <select v-model="age" id="age-select" class="mdl-textfield__input">
-                <option value="0">--- 年齢(学年) ---</option>
-                <option value="5">5歳 (幼稚園)</option>
-                <option value="6">6歳 (小1)</option>
-                <option value="7">7歳 (小2)</option>
-                <option value="8">8歳 (小3)</option>
-                <option value="9">9歳 (小4)</option>
-                <option value="10">10歳(小5)</option>
-                <option value="11">11歳(小6)</option>
-                <option value="12">12歳(中1)</option>
-                <option value="13">13歳(中2)</option>
-                <option value="14">14歳(中3)</option>
-                <option value="15">15歳(高1)</option>
-                <option value="16">16歳(高2)</option>
-                <option value="17">17歳(高3)</option>
-            </select>
+            <div class="text">
+                日本(平成27)の統計データからデータを読み込みます。4月1日地点の年齢及び身長です。
+            </div>
+            <div class="flex">
+                <div>
+                    <div class="form-label mdl-color-text--primary">性別</div>
+                    <mdl-radio v-model="sex" val="1">男</mdl-radio>
+                    <mdl-radio v-model="sex" val="2">女</mdl-radio>
+                </div>
+                <div>
+                    <div class="form-label mdl-color-text--primary">年齢</div>
+                    <select v-model="age" id="age-select" class="mdl-textfield__input">
+                        <option value="0">--- 年齢(学年) ---</option>
+                        <option value="5">5歳 (幼稚園)</option>
+                        <option value="6">6歳 (小1)</option>
+                        <option value="7">7歳 (小2)</option>
+                        <option value="8">8歳 (小3)</option>
+                        <option value="9">9歳 (小4)</option>
+                        <option value="10">10歳(小5)</option>
+                        <option value="11">11歳(小6)</option>
+                        <option value="12">12歳(中1)</option>
+                        <option value="13">13歳(中2)</option>
+                        <option value="14">14歳(中3)</option>
+                        <option value="15">15歳(高1)</option>
+                        <option value="16">16歳(高2)</option>
+                        <option value="17">17歳(高3)</option>
+                        <option value="20">18歳～29歳</option>
+                        <option value="30">30歳～59歳</option>
+                        <option value="60">60歳～70歳</option>
+                        <option value="70">70歳～80歳</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="mdl-card__actions mdl-card--border">
             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" @click="apply">
@@ -53,6 +62,13 @@
         15: { "average": 168.3, "stddev": 5.96 },
         16: { "average": 169.8, "stddev": 5.82 },
         17: { "average": 170.7, "stddev": 5.78 },
+        20: { "average": 172.2, "stddev": 6.1 },
+        30: { "average": 170.6, "stddev": 5.7 },
+        60: { "average": 166.1, "stddev": 6.1 },
+        70: { "average": 161.9, "stddev": 6.3 }
+
+
+
     }
         , {
         5: { "average": 109.4, "stddev": 4.66 },
@@ -68,6 +84,11 @@
         15: { "average": 157.1, "stddev": 5.29 },
         16: { "average": 157.6, "stddev": 5.32 },
         17: { "average": 157.9, "stddev": 5.38 },
+        20: { "average": 157.6, "stddev": 5.1 },
+        30: { "average": 157.5, "stddev": 5.2 },
+        60: { "average": 153.2, "stddev": 5.4 },
+        70: { "average": 148.3, "stddev": 6.2 },	
+
     }
 
     ]
@@ -84,14 +105,41 @@
 </script>
 
 <style lang="scss">
+
+#sex-age{
+
 .form-label {
     float: left;
     color: #666;
     font-size: small;
-    line-height: 24px;
     margin-right: 10px;
+    float:none;
+    margin-bottom:-10px;
 }
 select{
     width:auto !important;
 }
+
+
+.text
+{
+    font-size:small;
+    margin-bottom:1em;
+}
+
+.flex{
+    display:flex;
+
+    >div:first-child{
+        margin-right:20px;
+    }
+}
+
+.mdl-radio{
+    margin-top:5px;
+    padding-right:15px;
+}
+
+}
+
 </style>

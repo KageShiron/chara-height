@@ -36,8 +36,38 @@
   padding:10px;
 }
 .mdl-card{
+  margin:10px 0px;
+  width:100%;
   margin:10px;
-  width:auto;
-  max-width:640px;
+  break-inside:avoid;
+  
+  .mdl-card__title{
+      padding:0.5em 1em;
+      font-size:18px;
+    }
 }
+
+#app{
+  -ms-grid-column: 2;
+  -moz-column-count: 2;
+  -webkit-column-count:2;
+  column-count:2;
+}
+ul{
+  padding-left:1em;
+}
+
+@media screen and (max-width: 480px) {
+  .mdl-card{
+    margin:10px 0;
+
+  }
+  #app{
+  -ms-grid-column: 1;
+  -moz-column-count:1;
+  -webkit-column-count:1;
+  column-count:1;
+  }
+}
+
 </style>

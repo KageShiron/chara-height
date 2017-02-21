@@ -1,30 +1,35 @@
 <template>
     <div id="generate" class="mdl-card mdl-shadow--2dp">
-        <div class="mdl-card__title">
+        <div class="mdl-card__title mdl-color--primary mdl-color-text--primary-contrast ">
             <h2 class="mdl-card__title-text">ランダム作成</h2>
         </div>
         <div class="card-content">
             上記のグラフの正規分布に従ってランダムな身長を生成します。<br>
-
             <mdl-textfield floating-label="下限確率" type="number" v-model="min" />% ～
             <mdl-textfield　floating-label="上限確率" type="number" v-model="max" />%
-            <mdl-button class="mdl-button--raised" @click.native="generate">作成</mdl-button><br>
+            <mdl-button class="mdl-button--raised" @click.native="generate">作成</mdl-button>
             <h3>プリセット</h3>
-            <span class="label">通常</span>
-            <mdl-button class="mdl-button--raised" @click.native="setRange(0,1)">0%～100%</mdl-button>
-            <mdl-button class="mdl-button--raised" @click.native="setRange(0,0.5)">0%～50%</mdl-button>
-            <mdl-button class="mdl-button--raised" @click.native="setRange(0.5,1)">50%～100%</mdl-button><br>
-            <span class="label">端を切り捨て</span>
-            <mdl-button class="mdl-button--raised" @click.native="setRange(0.02,0.98)">2%～98%</mdl-button>
-            <mdl-button class="mdl-button--raised" @click.native="setRange(0.02,1)">2%～50%</mdl-button>
-            <mdl-button class="mdl-button--raised" @click.native="setRange(.50,.98)">50%～98%</mdl-button><br>
-            <span class="label">6分割</span>
-            <mdl-button class="mdl-button--raised mini" @click.native="setRange(0,1/6)">①</mdl-button>
-            <mdl-button class="mdl-button--raised mini" @click.native="setRange(1/6,2/6)">②</mdl-button>
-            <mdl-button class="mdl-button--raised mini" @click.native="setRange(2/6,3/6)">③</mdl-button>
-            <mdl-button class="mdl-button--raised mini" @click.native="setRange(3/6,4/6)">④</mdl-button>
-            <mdl-button class="mdl-button--raised mini" @click.native="setRange(4/6,5/6)">⑤</mdl-button>
-            <mdl-button class="mdl-button--raised mini" @click.native="setRange(5/6,6/6)">⑥</mdl-button>
+            <div class="flex">
+                <span class="label">通常</span>
+                <mdl-button class="mdl-button--raised" @click.native="setRange(0,1)">0%～100%</mdl-button>
+                <mdl-button class="mdl-button--raised" @click.native="setRange(0,0.5)">0%～50%</mdl-button>
+                <mdl-button class="mdl-button--raised" @click.native="setRange(0.5,1)">50%～100%</mdl-button>
+            </div>
+            <div class="flex">
+                <span class="label">端無し</span>
+                <mdl-button class="mdl-button--raised" @click.native="setRange(0.02,0.98)">2%～98%</mdl-button>
+                <mdl-button class="mdl-button--raised" @click.native="setRange(0.02,0.5)">2%～50%</mdl-button>
+                <mdl-button class="mdl-button--raised" @click.native="setRange(.50,.98)">50%～98%</mdl-button>
+            </div>
+            <div class="flex">
+                <span class="label">6分割</span>
+                <mdl-button class="mdl-button--raised mini" @click.native="setRange(0,1/6)">①</mdl-button>
+                <mdl-button class="mdl-button--raised mini" @click.native="setRange(1/6,2/6)">②</mdl-button>
+                <mdl-button class="mdl-button--raised mini" @click.native="setRange(2/6,3/6)">③</mdl-button>
+                <mdl-button class="mdl-button--raised mini" @click.native="setRange(3/6,4/6)">④</mdl-button>
+                <mdl-button class="mdl-button--raised mini" @click.native="setRange(4/6,5/6)">⑤</mdl-button>
+                <mdl-button class="mdl-button--raised mini" @click.native="setRange(5/6,6/6)">⑥</mdl-button>
+            </div>
         </div>
         <div class="card-content border">
             <span class="generated-height">{{generated}}cm</span> (全体の<span class="generated-height">{{heightPercent}}%</span>の位置)<br>
@@ -800,12 +805,13 @@
 {
     .mdl-textfield
     {
-        width:100px !important;
+        width:70px !important;
+        padding-bottom:0;
     }
     .mdl-button
     {
         margin:5px;
-        width:150px;
+        top:-6px;
     }
     .mini
     {
@@ -817,18 +823,47 @@
         margin-top:0;
         margin-bottom:0;
     }
-    .card-content > .label{
+    .label{
         width:100px;
         display:inline-block;
+        
+        -webkit-writing-mode: vertical-rl;
+        writing-mode: vertical-rl;
+        text-orientation:upright;
+        font-size:12px;
+        color:#666;
+        flex-basis: 20px;
     }
 
     .border
     {
         border-top:1px solid rgba(0,0,0,0.2);
+        padding:30px;
     }
 
     .generated-height{
         font-size:30px;
+    }
+
+    
+    .flex{
+        display:flex;
+        align-items: center;
+        margin:5px 0;
+
+        .mdl-button--raised{
+            flex:1;
+            margin:0 3px;
+            min-width:auto;
+            padding:0;
+            font-size:12px;
+        }
+
+        .mdl-textfield{
+            padding:0;
+            
+        }
+
     }
 }
 
