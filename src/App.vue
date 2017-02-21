@@ -37,7 +37,7 @@
 }
 .mdl-card{
   margin:10px 0px;
-  width:calc(100% - 20px);
+  width:100%;
   margin:10px;
   break-inside:avoid;
   
@@ -52,7 +52,6 @@
   -moz-column-count: 2;
   -webkit-column-count:2;
   column-count:2;
-  column-gap:0;
 }
 ul{
   padding-left:1em;
