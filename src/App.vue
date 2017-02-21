@@ -3,9 +3,6 @@
     <sex-age @apply="apply" />
     <chart-data v-model="chartData" />
     <generate :average="chartData.average" :stddev="chartData.stddev" />
-  </div>
-</template>
-
     <div class="mdl-card mdl-shadow--2dp">
       <div class="mdl-card__title">
         <h2 class="mdl-card__title-text">免責/出典</h2>
@@ -14,12 +11,15 @@
         これはTRPGや創作においてそれっぽい身長を生成するためのツールです。<br>
         統計や生物学的に適切な情報を示すものではなく、自己責任でご利用ください。<br>
         正規分布に関しては±3.5σ程度の正規分布表を適当に参照してるだけです。<br>
-        ちくしょう、俺の身長は平均に達してなかった。誰も俺を
+        ちくしょう、俺の身長は平均に達してなかった。誰も俺を愛さない。
         <ul>
           <li><a href="http://www.e-stat.go.jp/SG1/estat/GL08020103.do?_toGL08020103_&listID=000001151595&requestSender=dsearch">国民健康・栄養調査 平成２６年国民健康・栄養調査 年次 2014年</a> 18以上の身長、標準偏差</li>
           <li><a href="http://www.e-stat.go.jp/SG1/estat/List.do?bid=000001070659&cycode=0">学校保健統計調査 平成２７年度 全国表 </a> 17歳以下の身長、標準偏差</li>
       </div>
     </div>
+  </div>
+</template>
+
 <script>
   import SexAge from "./SexAge.vue";
   import ChartData from "./ChartData.vue";
