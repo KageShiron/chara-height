@@ -93,7 +93,7 @@ ul{
 
 @media screen and (max-width: 480px) {
   .mdl-card{
-    margin:10px 0;
+    margin:10px 5px;
 
   }
   #app{
