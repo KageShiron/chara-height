@@ -40,7 +40,7 @@
         </div>
         <div class="mdl-card__actions mdl-card--border">
             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" @click="apply">
-      反映
+      統計データを反映
     </a>
         </div>
     </div>
@@ -94,7 +94,7 @@
     ]
     export default {
         name: 'sex-age',
-        data() { return { sex: 1, age: 0 } },
+        data() { return { sex: 1, age: 20 } },
         methods: {
             apply: function () {
                 const v = toukei[this.sex][this.age];
