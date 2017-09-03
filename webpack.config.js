@@ -4,13 +4,12 @@ var webpack = require('webpack')
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './height'),
+    path: path.resolve(__dirname, '.'),
     publicPath: './',
     filename: 'build.js'
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
