@@ -1,10 +1,15 @@
 var path = require('path')
 var webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+
 
 module.exports = {
-  entry: './src/main.js',
+  entry: {
+    js: './src/main.js',
+  },
   output: {
-    path: path.resolve(__dirname, '.'),
+    path: path.resolve(__dirname, './dist'),
     publicPath: './',
     filename: 'build.js'
   },
@@ -37,6 +42,16 @@ module.exports = {
       }
     ]
   },
+
+  plugins: [
+    new CopyWebpackPlugin([{
+      from: {
+        glob: './src/index.html',
+        dot: true
+      },
+      to: './[name].[ext]'
+    }, ])
+  ],
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.common.js'

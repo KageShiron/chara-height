@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "chart.js": "^2.5.0",
+    "copy-webpack-plugin": "^4.0.1",
     "vue": "^2.1.0",
     "vue-mdl": "^1.1.0"
   },
@@ -27,7 +28,7 @@
     "webpack": "^2.2.0",
     "webpack-dev-server": "^2.2.0"
   },
-  "engines":{
-    "node":"7.6.0"
+  "engines": {
+    "node": "7.6.0"
   }
 }
